@@ -8,18 +8,18 @@ A containerized working environment for the particle tracking code
 1) Create a named Docker container (note: we also mount a volume here, but this is
 strictly optional)
 
-`docker container create --name mycontainer --volume /path/to/host/dir:/path/to/container/dir opalite:latest`
+`docker container create -i --name mycontainer --volume /path/to/host/dir:/path/to/container/dir -it opalite:latest
 
-2) Then run whatever command you'd like (i.e. a `bash` shell) in the container
+n.b. the `-i` argument here makes this container interactive, meaning that
+stdin will be open even when nothing is attached to the container, allowing it
+to run in the background.
 
-`docker run mycontainer bash  # or whatever you want to run`
+2) Then run whatever command you'd like in the container
+
+`docker start mycontainer`
+`docker exec -it mycontainer bash  # or whatever you want to run`
 
 3) OPAL is available inside the container as `/usr/local/bin/opal`
-
-**Note:** You could also start the container separately and execute a command
-in it, which might be useful if you'd like to run multiple OPAL sessions at
-once in a single container.
-
 
 ## Data persistence
 

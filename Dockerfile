@@ -90,3 +90,4 @@ RUN cmake --build /opt/OPAL_src/build --target install && \
 
 USER pearl
 WORKDIR /home/pearl
+CMD /bin/bash
